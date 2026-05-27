@@ -8,8 +8,6 @@ Built with **Java 21**, **Spring Boot 3.3**, and **MongoDB**.
 
 ## Running the app
 
-### With Docker (recommended)
-
 Requires [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/).
 
 ```bash
@@ -18,12 +16,11 @@ docker compose up --build
 
 The API is available at `http://localhost:8080`.
 
-### Locally (without Docker)
-
-Requires Java 21+, Maven 3.9+, and a MongoDB instance running on `localhost:27017`.
+### Stopping the app
 
 ```bash
-mvn spring-boot:run
+docker compose down        # stop and remove containers
+docker compose down -v     # also delete the stored data
 ```
 
 ### Environment variables
