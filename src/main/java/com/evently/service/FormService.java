@@ -5,6 +5,7 @@ import com.evently.dto.EntryResponse;
 import com.evently.dto.FormFieldResponse;
 import com.evently.dto.FormRequest;
 import com.evently.dto.FormResponse;
+import com.evently.dto.FormSummaryResponse;
 import com.evently.exception.FormNotFoundException;
 import com.evently.model.Form;
 import com.evently.model.FormEntry;
@@ -41,6 +42,12 @@ public class FormService {
         Form saved = formRepository.save(form);
 
         return toFormResponse(saved);
+    }
+
+    public List<FormSummaryResponse> getForms() {
+        return formRepository.findAll().stream()
+                .map(f -> new FormSummaryResponse(f.getId(), f.getTitle(), f.getDescription()))
+                .toList();
     }
 
     public FormResponse getForm(String id) {

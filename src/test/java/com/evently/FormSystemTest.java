@@ -187,6 +187,25 @@ class FormSystemTest {
     }
 
     // -------------------------------------------------------------------------
+    // Scenario 8 — GET /forms returns summary list (id, title, description only)
+    // -------------------------------------------------------------------------
+
+    @Test
+    void getForms_returnsListWithSummaryFields() {
+        createForm();
+
+        ResponseEntity<List> response = restTemplate.getForEntity("/forms", List.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).hasSize(1);
+        Map<String, Object> summary = (Map<String, Object>) response.getBody().get(0);
+        assertThat(summary).containsKey("id");
+        assertThat(summary.get("title")).isEqualTo("Spring Meetup Sign-up");
+        assertThat(summary.get("description")).isEqualTo("Join us for drinks and talks");
+        assertThat(summary).doesNotContainKey("fields");
+    }
+
+    // -------------------------------------------------------------------------
     // Helpers
     // -------------------------------------------------------------------------
 

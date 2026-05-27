@@ -76,13 +76,30 @@ Response `201 Created`:
 
 ---
 
+### List all forms
+
+```
+GET /forms
+```
+
+Response `200 OK`:
+
+```json
+[
+  { "id": "abc123", "title": "Tech Conference 2026", "description": "Annual developer conference sign-up" },
+  { "id": "def456", "title": "Summer Running Meetup", "description": "Monthly running club gathering" }
+]
+```
+
+---
+
 ### Get a form
 
 ```
 GET /forms/{id}
 ```
 
-Response `200 OK` — returns the form definition. Returns `404` if the id does not exist.
+Response `200 OK` — returns the full form definition including all fields. Returns `404` if the id does not exist.
 
 ---
 

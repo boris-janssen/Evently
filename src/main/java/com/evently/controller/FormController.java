@@ -4,6 +4,7 @@ import com.evently.dto.EntryRequest;
 import com.evently.dto.EntryResponse;
 import com.evently.dto.FormRequest;
 import com.evently.dto.FormResponse;
+import com.evently.dto.FormSummaryResponse;
 import com.evently.service.FormService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,11 @@ public class FormController {
     @ResponseStatus(HttpStatus.CREATED)
     public FormResponse createForm(@Valid @RequestBody FormRequest request) {
         return formService.createForm(request);
+    }
+
+    @GetMapping
+    public List<FormSummaryResponse> getForms() {
+        return formService.getForms();
     }
 
     @GetMapping("/{id}")

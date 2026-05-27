@@ -5,6 +5,7 @@ import com.evently.dto.EntryResponse;
 import com.evently.dto.FormFieldRequest;
 import com.evently.dto.FormRequest;
 import com.evently.dto.FormResponse;
+import com.evently.dto.FormSummaryResponse;
 import com.evently.exception.EntryValidationException;
 import com.evently.exception.FieldError;
 import com.evently.exception.FormNotFoundException;
@@ -100,6 +101,27 @@ class FormServiceTest {
         assertThat(response.getFields().get(0).isRequired()).isTrue();
         assertThat(response.getFields().get(1).getName()).isEqualTo("email");
         assertThat(response.getFields().get(1).getType()).isEqualTo(FieldType.EMAIL);
+    }
+
+    // --- getForms ---
+
+    @Test
+    void getForms_returnsMappedSummaryList() {
+        when(formRepository.findAll()).thenReturn(List.of(savedForm));
+
+        List<FormSummaryResponse> responses = formService.getForms();
+
+        assertThat(responses).hasSize(1);
+        assertThat(responses.get(0).getId()).isEqualTo(FORM_ID);
+        assertThat(responses.get(0).getTitle()).isEqualTo(FORM_TITLE);
+        assertThat(responses.get(0).getDescription()).isEqualTo(FORM_DESCRIPTION);
+    }
+
+    @Test
+    void getForms_noForms_returnsEmptyList() {
+        when(formRepository.findAll()).thenReturn(List.of());
+
+        assertThat(formService.getForms()).isEmpty();
     }
 
     // --- getForm ---
