@@ -1,0 +1,38 @@
+{
+  "forms": [
+    {
+      "title": "Tech Conference 2026",
+      "description": "Annual developer conference sign-up",
+      "fields": [
+        { "name": "name",    "label": "Full Name",             "type": "TEXT",    "required": true  },
+        { "name": "email",   "label": "Email Address",         "type": "EMAIL",   "required": true  },
+        { "name": "company", "label": "Company",               "type": "TEXT",    "required": false },
+        { "name": "dietary", "label": "Dietary Requirements",  "type": "TEXT",    "required": false }
+      ]
+    },
+    {
+      "title": "Summer Running Meetup",
+      "description": "Monthly running club gathering",
+      "fields": [
+        { "name": "name",       "label": "Full Name",                   "type": "TEXT",    "required": true  },
+        { "name": "email",      "label": "Email Address",               "type": "EMAIL",   "required": true  },
+        { "name": "phone",      "label": "Phone Number",                "type": "PHONE",   "required": false },
+        { "name": "experience", "label": "Running Experience Level",    "type": "TEXT",    "required": false },
+        { "name": "newsletter", "label": "Subscribe to Newsletter",     "type": "BOOLEAN", "required": false }
+      ]
+    }
+  ],
+  "entries": [
+    [
+      { "answers": { "name": "Alice Johnson", "email": "alice@example.com", "company": "Acme Corp",  "dietary": "Vegetarian" } },
+      { "answers": { "name": "Bob Smith",     "email": "bob@example.com",   "company": "Tech Inc"                           } },
+      { "answers": { "name": "Carol White",   "email": "carol@example.com",                          "dietary": "None"      } }
+    ],
+    [
+      { "answers": { "name": "Dave Brown",   "email": "dave@example.com",  "phone": "+31612345678", "experience": "Beginner",      "newsletter": true  } },
+      { "answers": { "name": "Eve Davis",    "email": "eve@example.com",                            "experience": "Intermediate",  "newsletter": false } },
+      { "answers": { "name": "Frank Miller", "email": "frank@example.com", "phone": "+31698765432", "experience": "Advanced"                           } },
+      { "answers": { "name": "Grace Wilson", "email": "grace@example.com",                                                         "newsletter": true  } }
+    ]
+  ]
+}
